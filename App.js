@@ -5,6 +5,7 @@ import Button from "./components/button";
 import Separator from "./components/separator";
 import List from "./screens/list";
 import Article from "./screens/article";
+import GlueStackUIBasic from "./screens/GlueStackUIBasic";
 
 // Functional Component
 const App = () => {
@@ -18,7 +19,7 @@ const App = () => {
     // Close Drawer
     drawer.current.closeDrawer();
     // Change state value
-  
+
     setPage(pageName);
   };
 
@@ -27,7 +28,12 @@ const App = () => {
     <View style={{ padding: 30, backgroundColor: "#222222", flex: 1 }}>
       <Button text="List" onPress={() => changePage(drawer, "list")} />
       <Separator height={30} />
-      <Button text="Article" onPress={() => changePage(drawer, "article")} />
+      <Button text="Articles" onPress={() => changePage(drawer, "article")} />
+      <Separator height={30} />
+      <Button
+        text="GlueStack UI"
+        onPress={() => changePage(drawer, "GlueStackUIBasic")}
+      />
       <Separator height={30} />
       <Button text="Close" onPress={() => drawer.current.closeDrawer()} />
     </View>
@@ -43,7 +49,13 @@ const App = () => {
       <StatusBar style="light" backgroundColor="#AA0002" />
       <View>
         <Header drawer={drawer} />
-        {page == "list" ? <List /> : page == "article" ? <Article /> : null}
+        {page == "list" ? (
+          <List />
+        ) : page == "article" ? (
+          <Article />
+        ) : page == "GlueStackUIBasic" ? (
+          <GlueStackUIBasic />
+        ) : null}
       </View>
     </DrawerLayoutAndroid>
   );
